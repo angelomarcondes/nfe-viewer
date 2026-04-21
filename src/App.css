@@ -70,14 +70,12 @@
 .btn-print {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
   background-color: var(--color-primary);
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   border-radius: var(--radius-md);
-  font-weight: 500;
-  font-size: 0.875rem;
   cursor: pointer;
   transition: all 0.2s;
   box-shadow: var(--shadow-sm);
@@ -92,14 +90,12 @@
 .btn-clear {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
   background-color: var(--color-surface);
   color: var(--color-error);
   border: 1px solid var(--color-error);
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   border-radius: var(--radius-md);
-  font-weight: 500;
-  font-size: 0.875rem;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -131,10 +127,73 @@
   animation: fadeIn 0.3s ease-out;
 }
 
+.zoom-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  align-self: center;
+}
+
+.zoom-level {
+  font-weight: 500;
+  min-width: 3rem;
+  text-align: center;
+}
+
+.btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  transition: all 0.2s;
+}
+
+.btn-icon:hover {
+  background-color: var(--color-surface-hover);
+}
+
 .viewer-layout {
   display: flex;
   flex: 1;
-  justify-content: center; /* Centraliza a nota */
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.nav-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--color-primary);
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: 50%;
+  transition: all 0.2s;
+  align-self: center;
+}
+
+.nav-arrow:hover:not(:disabled) {
+  background-color: var(--color-surface-hover);
+  transform: scale(1.1);
+}
+
+.nav-arrow:disabled {
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+  opacity: 0.3;
 }
 
 .viewer-content {

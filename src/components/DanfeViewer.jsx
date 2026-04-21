@@ -32,7 +32,7 @@ const formatDateTime = (dateStr) => {
   }
 }
 
-export function DanfeViewer({ xmlDoc }) {
+export function DanfeViewer({ xmlDoc, zoom = 1 }) {
   const nfeData = useMemo(() => {
     if (!xmlDoc) return null;
 
@@ -205,7 +205,10 @@ export function DanfeViewer({ xmlDoc }) {
 
   return (
     <div className="danfe-wrapper">
-      <div className="danfe-page print-area">
+      <div 
+        className="danfe-page print-area"
+        style={{ transform: `scale(${zoom})`, transformOrigin: 'top center' }}
+      >
         
         {/* RECIBO (Canhoto) */}
         <div className="d-row d-canhoto">

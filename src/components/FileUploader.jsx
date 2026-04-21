@@ -86,9 +86,8 @@ export function FileUploader({ onFilesAdded, compact = false }) {
   if (compact) {
     return (
       <div className="uploader-compact">
-        <label className="btn-upload-compact">
-          <Plus size={16} />
-          <span>Adicionar XML</span>
+        <label className="btn-upload-compact btn-icon" title="Adicionar XML">
+          <Plus size={20} />
           <input 
             type="file" 
             multiple 

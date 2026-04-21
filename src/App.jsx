@@ -2,12 +2,24 @@ import { useState } from 'react';
 import { FileUploader } from './components/FileUploader';
 import { ThumbnailBar } from './components/ThumbnailBar';
 import { DanfeViewer } from './components/DanfeViewer';
-import { FileBox, Printer, Trash2 } from 'lucide-react';
+import { FileBox, Printer, Trash2, ChevronLeft, ChevronRight, ZoomIn, ZoomOut } from 'lucide-react';
 import './App.css';
 
 function App() {
   const [xmlFiles, setXmlFiles] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [zoom, setZoom] = useState(1);
+
+  const handleZoomIn = () => setZoom(z => Math.min(z + 0.2, 2));
+  const handleZoomOut = () => setZoom(z => Math.max(z - 0.2, 0.4));
+
+  const handlePrev = () => {
+    if (selectedIndex > 0) setSelectedIndex(selectedIndex - 1);
+  };
+
+  const handleNext = () => {
+    if (selectedIndex < xmlFiles.length - 1) setSelectedIndex(selectedIndex + 1);
+  };
 
   const handleFilesAdded = (newFiles) => {
     setXmlFiles((prev) => {
@@ -114,13 +126,11 @@ function App() {
 
           {xmlFiles.length > 0 && (
             <div className="header-actions">
-              <button className="btn-clear" onClick={handleClearAll} title="Limpar Tudo">
+              <button className="btn-icon btn-clear" onClick={handleClearAll} title="Limpar Tudo">
                 <Trash2 size={20} />
-                <span>Limpar</span>
               </button>
-              <button className="btn-print" onClick={handlePrint} title="Imprimir DANFE">
+              <button className="btn-icon btn-print" onClick={handlePrint} title="Imprimir DANFE">
                 <Printer size={20} />
-                <span>Imprimir</span>
               </button>
             </div>
           )}
@@ -134,11 +144,37 @@ function App() {
           </div>
         ) : (
           <div className="viewer-section">
+            <div className="zoom-controls no-print">
+              <button className="btn-icon" onClick={handleZoomOut} title="Diminuir Zoom">
+                <ZoomOut size={20} />
+              </button>
+              <span className="zoom-level">{Math.round(zoom * 100)}%</span>
+              <button className="btn-icon" onClick={handleZoomIn} title="Aumentar Zoom">
+                <ZoomIn size={20} />
+              </button>
+            </div>
             <div className="viewer-layout">
-              {/* Sidebar removida. Agora a DANFE ocupa a largura toda. */}
+              <button 
+                className="nav-arrow left no-print" 
+                onClick={handlePrev} 
+                disabled={selectedIndex === 0}
+                title="Nota Anterior"
+              >
+                <ChevronLeft size={48} />
+              </button>
+
               <div className="viewer-content">
-                <DanfeViewer xmlDoc={xmlFiles[selectedIndex].xml} />
+                <DanfeViewer xmlDoc={xmlFiles[selectedIndex].xml} zoom={zoom} />
               </div>
+
+              <button 
+                className="nav-arrow right no-print" 
+                onClick={handleNext} 
+                disabled={selectedIndex === xmlFiles.length - 1}
+                title="Próxima Nota"
+              >
+                <ChevronRight size={48} />
+              </button>
             </div>
           </div>
         )}
