@@ -214,8 +214,9 @@
 
 .chave-text {
   font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 1px;
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
 }
 
 .consulta-auth {
