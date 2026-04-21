@@ -1,0 +1,316 @@
+.danfe-wrapper {
+  padding: 1rem;
+  height: 100%;
+  overflow-y: auto;
+  background-color: var(--color-surface-hover);
+}
+
+.danfe-page {
+  background-color: white;
+  margin: 0 auto;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: var(--radius-sm);
+  max-width: 210mm; /* A4 width */
+  min-height: 297mm; /* A4 height */
+  font-family: 'Times New Roman', Times, serif; /* DANFE oficial usa serif ou sans-serif genérico compacto */
+  color: #000;
+  box-shadow: var(--shadow-sm);
+}
+
+.danfe-page * {
+  box-sizing: border-box;
+}
+
+/* Base DANFE Box Model */
+.d-row {
+  display: flex;
+  border: 1px solid #000;
+  border-top: none;
+  margin-top: -1px; /* collapse borders */
+  width: 100%;
+}
+
+.d-row:first-of-type, .d-row.d-canhoto, .d-row.d-header-box {
+  border-top: 1px solid #000;
+  margin-top: 0;
+}
+
+.d-row.d-border-none {
+  border: none;
+  border-top: 1px solid #000;
+  margin: 0;
+}
+
+.d-cell {
+  padding: 1px 3px;
+  border-right: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+  min-height: 28px;
+}
+
+.d-cell:last-child {
+  border-right: none;
+}
+
+/* Flex Proportions */
+.flex-1 { flex: 1; }
+.flex-2 { flex: 2; }
+.flex-3 { flex: 3; }
+.flex-4 { flex: 4; }
+.flex-5 { flex: 5; }
+.flex-6 { flex: 6; }
+.flex-7 { flex: 7; }
+
+/* Labels and Values */
+.label {
+  font-size: 6px;
+  text-transform: uppercase;
+  color: #000;
+  white-space: nowrap;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.value {
+  font-size: 9px;
+  font-weight: bold;
+  font-family: inherit;
+  line-height: 1.1;
+  word-break: break-word;
+}
+
+.text-right { text-align: right; }
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.font-bold { font-weight: bold; }
+.mt-1 { margin-top: 4px; }
+.mt-2 { margin-top: 8px; }
+
+.d-section-title {
+  font-size: 7px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 4px 0 1px 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Specific Areas */
+.d-canhoto {
+  min-height: 50px;
+}
+
+.d-canhoto-text {
+  justify-content: space-between;
+}
+
+.d-canhoto-nf {
+  justify-content: center;
+  align-items: center;
+  font-family: inherit;
+}
+
+.nf-num-canhoto { font-size: 14px; font-weight: bold; }
+.nf-n-canhoto { font-size: 10px; font-weight: bold; }
+.nf-s-canhoto { font-size: 10px; font-weight: bold; }
+
+.d-cut-line {
+  border-top: 1px dashed #666;
+  margin: 15px 0;
+  position: relative;
+}
+
+.d-header-box {
+  min-height: 140px;
+}
+
+.d-emitente {
+  justify-content: center;
+  padding: 5px;
+}
+
+.d-emitente h3 {
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0 0 5px 0;
+  text-transform: uppercase;
+  font-family: inherit;
+}
+
+.d-emitente p {
+  font-size: 9px;
+  margin: 0;
+  line-height: 1.2;
+  font-family: inherit;
+}
+
+.d-title-box {
+  align-items: center;
+  text-align: center;
+  padding: 5px;
+}
+
+.d-title-box h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  font-family: inherit;
+}
+
+.d-title-box p {
+  font-size: 8px;
+  margin: 2px 0 5px 0;
+  font-family: inherit;
+  text-transform: uppercase;
+}
+
+.d-tipo-nf {
+  border: 1px solid #000;
+  padding: 2px 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 8px;
+  font-family: inherit;
+  position: relative;
+  width: 80px;
+  margin-top: 5px;
+}
+
+.tipo-box {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 25px;
+  border-left: 1px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.d-nf-info {
+  display: flex;
+  flex-direction: column;
+  font-size: 10px;
+  font-family: inherit;
+  gap: 2px;
+}
+
+.d-chave-box {
+  padding: 5px;
+}
+
+.barcode-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+  height: 45px;
+}
+
+.chave-text {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.consulta-auth {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Fatura */
+.faturas-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 2px;
+}
+
+.fatura-item {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #000;
+  padding: 2px 4px;
+  font-size: 8px;
+  font-family: inherit;
+  min-width: 80px;
+}
+
+/* Tabela Produtos */
+.d-table-wrapper {
+  border: 1px solid #000;
+  margin-bottom: 4px;
+  margin-top: 1px;
+}
+
+.d-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.d-table th {
+  border-bottom: 1px solid #000;
+  border-right: 1px solid #000;
+  padding: 2px;
+  text-align: left;
+  font-weight: normal;
+  font-size: 6px;
+  text-transform: uppercase;
+}
+
+.d-table th:last-child {
+  border-right: none;
+}
+
+.d-table td {
+  border-bottom: 1px dashed #ccc;
+  border-right: 1px solid #000;
+  padding: 2px;
+  font-size: 8px;
+  font-family: inherit;
+}
+
+.d-table tr:last-child td {
+  border-bottom: none;
+}
+
+.d-table td:last-child {
+  border-right: none;
+}
+
+.d-obs {
+  min-height: 100px;
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 5mm;
+  }
+  
+  body * {
+    visibility: hidden;
+  }
+  
+  .print-area, .print-area * {
+    visibility: visible;
+  }
+  
+  .print-area {
+    position: static;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    max-width: none;
+    min-height: auto;
+  }
+}

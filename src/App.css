@@ -1,0 +1,209 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-header {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: var(--shadow-sm);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 5rem; /* Um pouco mais alto para acomodar miniaturas */
+  gap: 1rem;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex: 1;
+  min-width: 0; /* Para flexbox truncate funcionar nos filhos */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.logo h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+}
+
+.header-thumbnails {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  min-width: 0;
+  border-left: 1px solid var(--color-border);
+  padding-left: 1rem;
+}
+
+.header-upload-mini {
+  flex-shrink: 0;
+  width: 140px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.btn-print {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-print:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-clear {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--color-surface);
+  color: var(--color-error);
+  border: 1px solid var(--color-error);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-clear:hover {
+  background-color: #fef2f2;
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.upload-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.viewer-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.viewer-layout {
+  display: flex;
+  flex: 1;
+  justify-content: center; /* Centraliza a nota */
+}
+
+.viewer-content {
+  flex: 1;
+  max-width: 1000px; /* Limita a largura para ficar parecida com a página oficial */
+  width: 100%;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .header-content {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem 0;
+  }
+  
+  .logo-area {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .header-thumbnails {
+    width: 100%;
+    border-left: none;
+    padding-left: 0;
+  }
+  
+  .header-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+@media print {
+  body, #root {
+    min-height: auto !important;
+    overflow: visible !important;
+  }
+  .app-container {
+    display: block;
+    min-height: auto;
+    overflow: visible !important;
+  }
+  .app-main {
+    padding: 0;
+    display: block;
+    overflow: visible !important;
+  }
+  .viewer-section {
+    display: block;
+    overflow: visible !important;
+  }
+  .viewer-layout {
+    display: block;
+    overflow: visible !important;
+  }
+  .viewer-content {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    max-width: none;
+    overflow: visible !important;
+  }
+}
